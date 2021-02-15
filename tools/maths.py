@@ -189,6 +189,7 @@ def rotation_matrix(angle, axis, degrees=True):
     M : array
         3x3 rotation matrix array.
     """
+    angle = float(angle) # guard against size-1 numpy arrays
     if degrees:
         angle = np.deg2rad(angle)
     c = np.cos(angle)

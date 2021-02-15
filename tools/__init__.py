@@ -39,8 +39,8 @@ maths
     Mathematical functions and useful routines to extend numpy-like behaviour.
 """
 
-__version__ = '1.3'
-__date__ = '2020-02-14'
+__version__ = '1.4'
+__date__ = '2021-02-15'
 __author__ = 'Oliver King'
 
 from . import script

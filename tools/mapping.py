@@ -485,6 +485,11 @@ def xyz_to_longlat(x_img, y_img, z_img, n_angle, obs_long, obs_lat, degrees=True
         Iimages of long and lat coordinates. `long_img` values run from 0 to
         360 (degrees) or 2*pi (radians).
     """
+    # Guard against size-1 numpy arrays causing issues downstream
+    n_angle = float(n_angle)
+    obs_long = float(obs_long)
+    obs_lat = float(obs_lat)
+
     if degrees:
         n_angle = np.deg2rad(n_angle)
         obs_long = np.deg2rad(obs_long)
