@@ -61,6 +61,7 @@ def get_ephemerides(hdr=None, return_eph=True, loc=None, epoch=None, target=None
             'io': 501,
             'europa': 502,
             'jupiter': 599,
+            'neptune': 899,
             }
     if target in target_dict:
         target = target_dict[target] # Correct names to unambiguous ID if necessary
@@ -71,6 +72,12 @@ def get_ephemerides(hdr=None, return_eph=True, loc=None, epoch=None, target=None
                'lat': hdr['ESO TEL GEOLAT'],
                'elevation': hdr['ESO TEL GEOELEV']/1e3  # m -> km
                }
+    SpaceTelescope_dict = {
+            'hst': '@hst',
+            'jwst': '@-170',
+            }
+    if loc in SpaceTelescope_dict:
+        loc = SpaceTelescope_dict[loc]
     # Load ephemeris data
     conf.horizons_server = 'https://ssd.jpl.nasa.gov/horizons_batch.cgi'
     obj = Horizons(id=target, location=loc, id_type='majorbody', epochs=epoch)
